@@ -1,0 +1,40 @@
+{
+
+  "name": "resume-export-app",
+
+  "version": "1.0.0",
+
+  "description": "Интерактивное резюме с экспортом в PDF",
+
+  "homepage": "https://facelessprofile.github.io/Lab_14_JS_PDF_Material_Wave",
+
+  "scripts": {
+
+    "start": "parcel index.html",
+
+    "dev": "vite",
+
+    "build": "vite build",
+
+    "preview": "vite preview",
+
+    "deploy": "gh-pages -d dist"
+
+  },
+
+  "author": "PONK",
+
+  "license": "MIT",
+
+  "devDependencies": {
+
+    "gh-pages": "^6.3.0",
+
+    "parcel": "^2.16.4",
+
+    "vite": "^5.0.0"
+
+  }
+
+}
+

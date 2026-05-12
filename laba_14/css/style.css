@@ -1,0 +1,65 @@
+body {
+  background: #f5f5f5;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.resume-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 700px;
+  max-width: 90%;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.editable {
+  padding: 6px;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.editable:focus {
+  background-color: #e3f2fd;
+  outline: none;
+}
+
+#downloadBtn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1rem;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+#downloadBtn:hover {
+  background-color: #535bf2;
+}
+
+@media print {
+  #downloadBtn {
+    display: none !important;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to { transform: scale(4); opacity: 0; }
+}

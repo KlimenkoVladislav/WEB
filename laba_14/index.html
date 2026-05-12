@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik SR · UX/UI Designer · Full Material Wave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .resume-card {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 33% 67%;
+        }
+
+        /* ========= ЛЕВАЯ ТЁМНАЯ КОЛОНКА ========= */
+        .sidebar {
+            background: #0A1927;
+            color: #dfe9f0;
+            padding: 1.6rem 1.5rem;
+        }
+
+        .avatar-icon {
+            background: #F59E0B;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0A1927;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .avatar-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .hello-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .sidebar h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.7rem 0;
+            letter-spacing: -0.2px;
+            color: #FDE68A;
+            border-left: 3px solid #F59E0B;
+            padding-left: 10px;
+        }
+
+        .lang-item {
+            margin: 6px 0;
+            font-size: 0.85rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .lang-item:hover {
+            background: rgba(245, 158, 11, 0.15);
+            transform: translateX(4px);
+        }
+
+        .tools-block {
+            margin-bottom: 1rem;
+        }
+        .tools-block p {
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+            color: #FCD34D;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .tools-block p:hover {
+            background: rgba(245, 158, 11, 0.15);
+        }
+        
+        .tool-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tool-chips span, .interest-items span {
+            background: rgba(255, 245, 210, 0.12);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .tool-chips span:hover, .interest-items span:hover {
+            background: rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .interest-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        /* ========= ПРАВАЯ СВЕТЛАЯ ========= */
+        .main-content {
+            background: white;
+            padding: 1.5rem 1.8rem;
+        }
+
+        .name-title {
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #F59E0B;
+            display: inline-block;
+            padding-bottom: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .name-title h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0A1927;
+        }
+        .name-title p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #EA580C;
+        }
+
+        .section {
+            margin-bottom: 1rem;
+        }
+        .section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0A1927;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .section h2:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .section h2 i {
+            color: #F59E0B;
+            font-size: 1rem;
+        }
+
+        .job, .edu-item {
+            margin-bottom: 0.9rem;
+            padding: 8px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .job:hover, .edu-item:hover {
+            background: rgba(245, 158, 11, 0.05);
+            transform: translateX(4px);
+        }
+
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .job-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #1F3B4C;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .job-title:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .company {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #EA580C;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .company:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .date {
+            font-size: 0.7rem;
+            color: #5b6e7c;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .date:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        .job ul {
+            margin: 4px 0 0 18px;
+            padding-left: 0;
+        }
+        .job li {
+            font-size: 0.75rem;
+            line-height: 1.35;
+            margin: 3px 0;
+            color: #2d3e4e;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .job li:hover {
+            background: rgba(245, 158, 11, 0.08);
+        }
+
+        .edu-title {
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .edu-title:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 5px 0 2px;
+        }
+        .hashtags span {
+            background: #F1F5F9;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #1E4A6E;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .hashtags span:hover {
+            background: #F59E0B;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+        .edu-place {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #EA580C;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .edu-place:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .chat-email {
+            margin-top: 0.8rem;
+            background: #FFFBEB;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #FDE68A;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .chat-email:hover {
+            background: #FEF3C7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+        .chat-email p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0A1927;
+        }
+        .chat-email a {
+            color: #EA580C;
+            text-decoration: none;
+            font-size: 0.75rem;
+            word-break: break-all;
+        }
+
+        /* ========= MATERIAL WAVE КНОПКА PDF ========= */
+        .pdf-btn-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin-bottom: 16px;
+            text-align: right;
+        }
+        
+        .material-wave-btn {
+            background: #F59E0B;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #0A1927;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            letter-spacing: 0.3px;
+        }
+        
+        .material-wave-btn:hover {
+            background: #FBBF24;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
+        }
+        
+        .material-wave-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* ========= ОБЩИЙ MATERIAL WAVE ЭФФЕКТ ========= */
+        .wave-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 100%);
+            transform: scale(0);
+            animation: wave-animation 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            will-change: transform, opacity;
+            z-index: 1000;
+        }
+        
+        /* Для тёмного фона - светлая волна */
+        .sidebar .wave-ripple {
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.7) 0%, rgba(245, 158, 11, 0.2) 100%);
+        }
+        
+        /* Для светлого фона - тёмная волна */
+        .main-content .wave-ripple,
+        .chat-email .wave-ripple {
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.5) 0%, rgba(245, 158, 11, 0.15) 100%);
+        }
+        
+        @keyframes wave-animation {
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Подсветка редактируемых полей */
+        [contenteditable="true"] {
+            cursor: text;
+            border-radius: 6px;
+            padding: 2px 4px;
+            transition: all 0.12s ease;
+        }
+        
+        .sidebar [contenteditable="true"]:focus {
+            background-color: #2C4B3E !important;
+            outline: 2px solid #F59E0B !important;
+            color: #FFF7E6 !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        
+        .main-content [contenteditable="true"]:focus,
+        .chat-email [contenteditable="true"]:focus {
+            background-color: #FEF3C7 !important;
+            outline: 2px solid #F59E0B !important;
+            color: #0A1927 !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
+        
+        /* Предотвращаем конфликт волны с редактированием */
+        [contenteditable="true"]:focus {
+            z-index: 10;
+            position: relative;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .pdf-btn-wrapper {
+                display: none;
+            }
+            .resume-card {
+                max-width: 100%;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .wave-ripple {
+                display: none;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="pdf-btn-wrapper">
+    <button id="downloadBtn" class="material-wave-btn">
+        <i class="fas fa-file-pdf"></i> 
+        <span>Сохранить PDF (1 лист)</span>
+    </button>
+</div>
+
+<div class="resume-card" id="resumeContainer">
+    <div class="resume-grid">
+        <!-- ЛЕВАЯ ТЁМНАЯ -->
+        <div class="sidebar">
+            <div class="avatar-icon wave-target">KS</div>
+            <div class="hello-title">
+                <span class="editable wave-target" contenteditable="true">Hello 👋 I'm</span><br>
+                <span class="editable wave-target" contenteditable="true">Karthik SR</span>
+            </div>
+
+            <div>
+                <h3 class="wave-target">📖 Languages</h3>
+                <div class="lang-item wave-target editable" contenteditable="true">English</div>
+                <div class="lang-item wave-target editable" contenteditable="true">Malayalam</div>
+                <div class="lang-item wave-target editable" contenteditable="true">Hindi</div>
+            </div>
+
+            <div>
+                <h3 class="wave-target">🛠️ Tools</h3>
+                <div class="tools-block">
+                    <p class="editable wave-target" contenteditable="true">Design</p>
+                    <div class="tool-chips">
+                        <span class="wave-target editable" contenteditable="true">Photoshop</span>
+                        <span class="wave-target editable" contenteditable="true">Illustrator</span>
+                        <span class="wave-target editable" contenteditable="true">Figma</span>
+                    </div>
+                </div>
+                <div class="tools-block">
+                    <p class="editable wave-target" contenteditable="true">No‑code</p>
+                    <div class="tool-chips">
+                        <span class="wave-target editable" contenteditable="true">Webflow</span>
+                        <span class="wave-target editable" contenteditable="true">Bubble</span>
+                        <span class="wave-target editable" contenteditable="true">Adalo</span>
+                    </div>
+                </div>
+                <div class="tools-block">
+                    <p class="editable wave-target" contenteditable="true">AI & Video</p>
+                    <div class="tool-chips">
+                        <span class="wave-target editable" contenteditable="true">Runway ML</span>
+                        <span class="wave-target editable" contenteditable="true">Premiere Pro</span>
+                        <span class="wave-target editable" contenteditable="true">Midjourney</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="wave-target">✨ Interests</h3>
+                <div class="interest-items">
+                    <span class="wave-target editable" contenteditable="true">branding</span>
+                    <span class="wave-target editable" contenteditable="true">design</span>
+                    <span class="wave-target editable" contenteditable="true">photography</span>
+                    <span class="wave-target editable" contenteditable="true">artificial intelligence</span>
+                    <span class="wave-target editable" contenteditable="true">illustration</span>
+                    <span class="wave-target editable" contenteditable="true">typography</span>
+                    <span class="wave-target editable" contenteditable="true">social networks</span>
+                    <span class="wave-target editable" contenteditable="true">research</span>
+                    <span class="wave-target editable" contenteditable="true">drone pilot</span>
+                    <span class="wave-target editable" contenteditable="true">games</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ СВЕТЛАЯ -->
+        <div class="main-content">
+            <div class="name-title wave-target editable" contenteditable="true">
+                <h1>Karthik SR</h1>
+                <p>UX/UI Designer</p>
+            </div>
+
+            <div class="section">
+                <h2 class="wave-target"><i class="fas fa-briefcase"></i> Experience</h2>
+                
+                <div class="job wave-target">
+                    <div class="job-header">
+                        <span class="job-title editable wave-target" contenteditable="true">Marketing Manager</span>
+                        <span class="date editable wave-target" contenteditable="true">Jun 2023 – Present</span>
+                    </div>
+                    <div class="company editable wave-target" contenteditable="true">Pankayam | Full-time</div>
+                    <ul>
+                        <li class="editable wave-target" contenteditable="true">Strategy development and planning of campaigns that promote the business</li>
+                        <li class="editable wave-target" contenteditable="true">SEO Content Creation for Blogs, Website, Social media</li>
+                    </ul>
+                </div>
+                
+                <div class="job wave-target">
+                    <div class="job-header">
+                        <span class="job-title editable wave-target" contenteditable="true">Graphic / Web designer</span>
+                        <span class="date editable wave-target" contenteditable="true">2017 – Present</span>
+                    </div>
+                    <div class="company editable wave-target" contenteditable="true">Freelance</div>
+                    <ul>
+                        <li class="editable wave-target" contenteditable="true">Development of internal projects from scratch, product design of brands</li>
+                        <li class="editable wave-target" contenteditable="true">Landing page, webapps and hybrid apps</li>
+                        <li class="editable wave-target" contenteditable="true">Coordinating with outside agencies, web designer, marketing, printers</li>
+                    </ul>
+                </div>
+                
+                <div class="job wave-target">
+                    <div class="job-header">
+                        <span class="job-title editable wave-target" contenteditable="true">Legal Assistant</span>
+                        <span class="date editable wave-target" contenteditable="true">Sep 2021 – Jun 2023</span>
+                    </div>
+                    <div class="company editable wave-target" contenteditable="true">Law Firm | Intern</div>
+                    <ul>
+                        <li class="editable wave-target" contenteditable="true">Provide administrative support to lawyer and enhance office effectiveness</li>
+                        <li class="editable wave-target" contenteditable="true">Handle communication with clients, witnesses etc.</li>
+                        <li class="editable wave-target" contenteditable="true">Reproduce case briefs and summarize depositions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="wave-target"><i class="fas fa-graduation-cap"></i> Education</h2>
+                
+                <div class="edu-item wave-target">
+                    <div class="edu-title editable wave-target" contenteditable="true">UI/UX</div>
+                    <div class="hashtags">
+                        <span class="wave-target editable" contenteditable="true">#UX</span>
+                        <span class="wave-target editable" contenteditable="true">#UI</span>
+                        <span class="wave-target editable" contenteditable="true">#research</span>
+                        <span class="wave-target editable" contenteditable="true">#DesignSystem</span>
+                        <span class="wave-target editable" contenteditable="true">#wireframing</span>
+                        <span class="wave-target editable" contenteditable="true">#figma</span>
+                    </div>
+                    <div class="edu-place editable wave-target" contenteditable="true">Coursera — 2023</div>
+                </div>
+                
+                <div class="edu-item wave-target">
+                    <div class="edu-title editable wave-target" contenteditable="true">Law</div>
+                    <div class="hashtags">
+                        <span class="wave-target editable" contenteditable="true">#law</span>
+                        <span class="wave-target editable" contenteditable="true">#legalStudies</span>
+                        <span class="wave-target editable" contenteditable="true">#contracts</span>
+                        <span class="wave-target editable" contenteditable="true">#internationalLaws</span>
+                    </div>
+                    <div class="edu-place editable wave-target" contenteditable="true">University of Kerala — 2017-2022</div>
+                </div>
+                
+                <div class="edu-item wave-target">
+                    <div class="edu-title editable wave-target" contenteditable="true">Graphic design</div>
+                    <div class="hashtags">
+                        <span class="wave-target editable" contenteditable="true">#branding</span>
+                        <span class="wave-target editable" contenteditable="true">#web</span>
+                        <span class="wave-target editable" contenteditable="true">#illustration</span>
+                        <span class="wave-target editable" contenteditable="true">#adobe</span>
+                    </div>
+                    <div class="edu-place editable wave-target" contenteditable="true">Coursera — 2017</div>
+                </div>
+            </div>
+
+            <div class="chat-email wave-target editable" contenteditable="true">
+                <p>💬 Let's chat! I'm ready to work on exciting projects</p>
+                <a href="mailto:srkarthik.designscape@gmail.com" contenteditable="false">srkarthik.designscape@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ========== MATERIAL WAVE ДЛЯ ВСЕХ ЭЛЕМЕНТОВ ==========
+        function createMaterialWave(event, element) {
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            let x, y;
+            
+            if (event.touches) {
+                // Touch event
+                const touch = event.touches[0];
+                x = touch.clientX - rect.left - size / 2;
+                y = touch.clientY - rect.top - size / 2;
+            } else {
+                // Mouse event
+                x = event.clientX - rect.left - size / 2;
+                y = event.clientY - rect.top - size / 2;
+            }
+            
+            const ripple = document.createElement('span');
+            ripple.className = 'wave-ripple';
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.style.position = 'absolute';
+            ripple.style.pointerEvents = 'none';
+            
+            // Сохраняем оригинальный position
+            const originalPosition = window.getComputedStyle(element).position;
+            if (originalPosition !== 'relative' && originalPosition !== 'absolute') {
+                element.style.position = 'relative';
+                element.setAttribute('data-temp-relative', 'true');
+            }
+            
+            element.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+                if (element.getAttribute('data-temp-relative') === 'true' && element.querySelectorAll('.wave-ripple').length === 0) {
+                    element.style.position = '';
+                    element.removeAttribute('data-temp-relative');
+                }
+            }, 600);
+        }
+        
+        // Находим все элементы с классом wave-target
+        const waveElements = document.querySelectorAll('.wave-target');
+        
+        waveElements.forEach(element => {
+            // Добавляем обработчики для мыши и тач-событий
+            const handler = (e) => {
+                // Не создаём волну при редактировании текста
+                if (element.getAttribute('contenteditable') === 'true' && document.activeElement === element) {
+                    return;
+                }
+                e.stopPropagation();
+                createMaterialWave(e, element);
+            };
+            
+            element.addEventListener('click', handler);
+            element.addEventListener('touchstart', handler);
+        });
+        
+        // ========== localStorage автосохранение ==========
+        const editFields = document.querySelectorAll('[contenteditable="true"]');
+        
+        function saveAll() {
+            const backup = {};
+            editFields.forEach((el, idx) => {
+                let id = el.getAttribute('data-id');
+                if (!id) {
+                    id = `field_${idx}`;
+                    el.setAttribute('data-id', id);
+                }
+                backup[id] = el.innerHTML;
+            });
+            const emailLink = document.querySelector('.chat-email a');
+            if (emailLink) {
+                backup['special_email_href'] = emailLink.getAttribute('href');
+                backup['special_email_text'] = emailLink.innerText;
+            }
+            localStorage.setItem('resume_autosave', JSON.stringify(backup));
+        }
+        
+        function loadFromStorage() {
+            const saved = localStorage.getItem('resume_autosave');
+            if (!saved) return;
+            try {
+                const data = JSON.parse(saved);
+                editFields.forEach(el => {
+                    const id = el.getAttribute('data-id');
+                    if (id && data[id] !== undefined && el.innerHTML !== data[id]) {
+                        el.innerHTML = data[id];
+                    }
+                });
+                const mailLink = document.querySelector('.chat-email a');
+                if (mailLink && data['special_email_href']) {
+                    mailLink.setAttribute('href', data['special_email_href']);
+                    mailLink.innerText = data['special_email_text'] || mailLink.innerText;
+                }
+            } catch(e) {}
+        }
+        
+        editFields.forEach(el => {
+            if (!el.getAttribute('data-id')) el.setAttribute('data-id', `f_${Math.random()}`);
+            el.addEventListener('blur', saveAll);
+            el.addEventListener('input', saveAll);
+        });
+        loadFromStorage();
+        
+        // ========== PDF ГЕНЕРАЦИЯ ==========
+        const btn = document.getElementById('downloadBtn');
+        const resumeNode = document.getElementById('resumeContainer');
+        
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                createMaterialWave(e, btn);
+                
+                setTimeout(() => {
+                    if (document.activeElement) document.activeElement.blur();
+                    
+                    btn.style.opacity = '0.7';
+                    btn.style.transform = 'scale(0.98)';
+                    
+                    const pdfConfig = {
+                        margin: [0.3, 0.3, 0.3, 0.3],
+                        filename: 'Karthik_SR_Resume.pdf',
+                        image: { type: 'jpeg', quality: 0.95 },
+                        html2canvas: { scale: 2.2, letterRendering: true, useCORS: false, logging: false },
+                        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                    };
+                    
+                    html2pdf().set(pdfConfig).from(resumeNode).save().finally(() => {
+                        btn.style.opacity = '1';
+                        btn.style.transform = '';
+                    });
+                }, 100);
+            });
+        }
+    })();
+</script>
+</body>
+</html>
